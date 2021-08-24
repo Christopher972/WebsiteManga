@@ -4,7 +4,7 @@
             <div id="logo">
                 <img alt="Vue logo" src="../assets/flamme.jpg" id ="imageLogo">
             </div>
-            <div>
+            <div id="logoPirate">
                 <img alt="logo pirate" src="../assets/pirate.png" id ="imagePirate">    
             </div>
             <nav id ="nav">
@@ -17,7 +17,7 @@
         <h1>Read With Calm Down!</h1>
         <section id = "postsSection">
             <div class="figOne">
-                <figure class="">
+                <figure id="figOneImage">
                     <img class="oneImage" :src="post.imageUrl" :alt="post._id">
                 </figure>
                 <figcaption>
@@ -36,8 +36,8 @@
                     </div>
                     <div class="controlButtons">
                         <button class="back" @click="back">BACK</button>
-                        <button class="modify" @click="modify">MODIFY</button>
-                        <button class="delete" @click="deletePost">DELETE</button>
+                        <button class="modify" v-if="post.canUpdate" @click="modify">MODIFY</button>
+                        <button class="delete" v-if="post.canDelete" @click="deletePost">DELETE</button>
                     </div> 
                 </figcaption> 
             </div> 
@@ -87,6 +87,8 @@ export default {
                     res.json()
                     .then (post =>{
                         this.post = post;
+                        post.canUpdate = post.id == this.id;
+                        post.canDelete = post.id == this.id;
                         if (post.usersLiked.find(user => user === this.id)) {
                             this.liked = true;
                         } else if (post.usersDisliked.find(user => user === this.id)) {
@@ -291,12 +293,27 @@ figcaption{
   }
 }
 
-
-
 .modify{
     background: yellow;
 }
 .delete{
     background: red;
 }
+@media screen and (max-width:800px){
+ section > .figOne
+  {
+    margin: auto;
+  }
+ .figOne
+ {
+    flex-direction: column;
+    width: 100%; 
+  }
+   
+   #figOneImage img{
+    width:  250px;
+    margin: 0px;
+  }
+}
+
 </style>

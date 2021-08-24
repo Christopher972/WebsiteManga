@@ -4,7 +4,7 @@
             <div id="logo">
                 <img alt="Vue logo" src="../assets/flamme.jpg" id ="imageLogo">
             </div>
-            <div>
+            <div id="logoPirate">
                 <img alt="logo pirate" src="../assets/pirate.png" id ="imagePirate">    
             </div>
             
@@ -15,7 +15,7 @@
                 </ul>
             </nav>
         </header>
-        <h1>Le top du Pure Manga</h1>
+        <h1>Le top du Pure Animé</h1>
         <span v-if = "posts.length < 1">Désolé aucune publication sur l'interface</span>
         <section id = "postsSection">
             <div  v-for="post in posts" :key="post._id">
@@ -23,7 +23,6 @@
                     <div class= "figurePostItems" @click="imagePost(post._id)" :data-id="post._id">
                         <h4> {{ post.name }} </h4>
                         <img class="figureImage" v-if="post.imageUrl" :src="post.imageUrl" :alt="post._id"><br>
-                        <!-- <router-link :to="{ name:'post', params: { _id : post._id }}">Détail</router-link> -->
                         <p> Heat : {{ post.heat}}/10 </p>
                     </div>
                 </figure>
@@ -129,5 +128,20 @@ export default {
         transform: scale(1.05);
         box-shadow: 1px 1px 20px rgba(120, 120, 120, 0.3);
     }
+}
+
+@media screen and (max-width:800px){
+    #logo img
+  {
+    width: 100px;
+  }
+
+  #logoPirate img{
+    width:  100px;
+    margin: 30px;
+  }
+  #nav ul {
+      padding: 5px;
+  }
 }
 </style>

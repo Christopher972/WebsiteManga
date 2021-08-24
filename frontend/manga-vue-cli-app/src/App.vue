@@ -170,4 +170,27 @@ li{
    background-image: url(assets/flamme.jpg);
 }
 
+@media screen and (max-width:800px){
+  #app
+  {
+    width: 100%;
+    padding: 0px;
+  }
+
+  
+  h1 
+  {
+    padding: 4px;
+  }
+  
+  textarea, img
+  {
+    width: 100%;
+  }
+
+  .figurePost
+  {
+    transform: translate(35px, -15px);
+  } 
+}
 </style>
