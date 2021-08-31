@@ -98,7 +98,7 @@ export default {
         },
        modifyPost() { ///// Fonction appelée pour modifier la publication 
             const imageUrl = this.$refs.file.files[0];
-            const post ={"id":this.post._id, "userId":this.id, "name":this.post.name, "description":this.post.description, "imageUrl":this.post.imageUrl, "heat":this.post.heat };
+            const post ={"_id":this.post._id, "id":this.post.id, "name":this.post.name, "description":this.post.description, "imageUrl":this.post.imageUrl, "heat":this.post.heat };
             if (! imageUrl){
                 var dataPost =null;
                 dataPost = {
